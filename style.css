@@ -1,0 +1,51 @@
+
+:root{--bg:#f4f6f7;--surface:#ffffff;--ink:#12272e;--muted:#4f6169;--line:#cfd8dc;--accent:#f2b705;--accent-ink:#12272e;--link:#0b5c73;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b20;--surface:#15272e;--ink:#e8eef0;--muted:#9fb2ba;--line:#2a4049;--accent:#f2b705;--accent-ink:#12272e;--link:#6cc4dc;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1b20;--surface:#15272e;--ink:#e8eef0;--muted:#9fb2ba;--line:#2a4049;--accent:#f2b705;--accent-ink:#12272e;--link:#6cc4dc;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "IBM Plex Sans",system-ui,sans-serif;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;background-position:-1px -1px}
+body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.82;z-index:-1}
+a{color:var(--link)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+nav{padding:18px 0;display:flex;gap:20px;flex-wrap:wrap;font-size:15px}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+.hero{padding:56px 0 40px}
+.hero h1{font-weight:800;font-size:clamp(2.6rem,9vw,5.2rem);letter-spacing:-.02em}
+.sheet{margin-top:34px;background:var(--surface);border:1px solid var(--ink);max-width:640px;font-size:16px}
+.sheet div{display:grid;grid-template-columns:44px 110px 1fr;border-bottom:1px solid var(--line)}
+.sheet div:last-child{border-bottom:0}
+.sheet span{padding:9px 12px;border-right:1px solid var(--line)}
+.sheet span:last-child{border-right:0}
+.sheet .n{background:var(--bg);color:var(--muted);text-align:center;padding-left:0;padding-right:0}
+.sheet .k{color:var(--muted)}
+.sheet .hl{background:var(--accent);color:var(--accent-ink);font-weight:500}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;padding:12px 20px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:500;background:var(--surface)}
+.btn.main{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+section{padding:44px 0;border-top:1px solid var(--ink)}
+h2{font-size:1.9rem;font-weight:800;margin-bottom:22px}
+p{margin:0 0 14px;max-width:68ch}
+.job{display:grid;grid-template-columns:150px 1fr;gap:6px 24px;padding:0 0 26px}
+.job time{color:var(--muted);font-size:15px}
+.job h3{font-size:1.25rem}
+.job .org{color:var(--muted);margin-bottom:8px}
+.proj{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--accent);padding:18px 20px;margin-bottom:16px}
+.proj h3{font-size:1.2rem;margin-bottom:6px}
+.proj p{margin:0}
+.tag{display:inline-block;font-size:14px;color:var(--muted);margin:10px 14px 0 0}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.skills h3{font-size:1.05rem;margin-bottom:8px}
+.skills ul,.plain{margin:0;padding:0;list-style:none}
+.skills li,.plain li{padding:5px 0;border-bottom:1px solid var(--line)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.edu b{display:block}
+.edu span{color:var(--muted);font-size:15px}
+.edu li{padding:10px 0}
+footer{padding:36px 0 50px;border-top:1px solid var(--ink);color:var(--muted);font-size:15px}
+.theme{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));padding:9px 14px;border:1px solid var(--ink);background:var(--surface);color:var(--ink);font:500 14px "IBM Plex Sans",sans-serif;cursor:pointer}
+@media (max-width:620px){.job{grid-template-columns:1fr}.sheet div{grid-template-columns:34px 82px 1fr}.sheet span{padding:8px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
