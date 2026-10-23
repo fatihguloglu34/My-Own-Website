@@ -1,7 +1,7 @@
 <div align="center">
 
   <!-- Üst Dalga & Işıltı Başlığı -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24,30&height=220&section=header&text=Muhammet%20Fatih%20Güloğlu&fontSize=44&fontColor=ffffff&animation=twinkling&fontAlignY=38&desc=Software%20Developer%20%7C%20MIS&descSize=18&descAlignY=62&descColor=f2b705" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24,30&height=220&section=header&text=Fatih%20Güloğlu&fontSize=48&fontColor=ffffff&animation=twinkling&fontAlignY=38&desc=Software%20Developer%20%7C%20MIS&descSize=18&descAlignY=62&descColor=f2b705" width="100%"/>
 
   <!-- Hareketli Daktilo Metni -->
   <a href="https://git.io/typing-svg">
