@@ -1,61 +1,197 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fatih Güloğlu</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fatih Güloğlu</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<canvas id="grid" aria-hidden="true"></canvas><div id="bar"></div>
-<div class="wrap">
-<nav aria-label="Ana menü"><a href="#hakkimda">Hakkımda</a><a href="#deneyim">Deneyim</a><a href="#projeler">Projeler</a><a href="#yetenekler">Yetenekler</a><a href="#egitim">Eğitim</a><a href="#iletisim">İletişim</a></nav>
-<header class="hero">
-<div>
-<h1 id="name" aria-label="Fatih Güloğlu"></h1>
-<p class="role"><b id="typed"></b><i></i></p>
-<div class="cta"><a class="btn main" href="#projeler">Projelerime bak</a><a class="btn" href="mailto:fatihguloglu34@gmail.com">E-posta gönder</a></div>
-</div>
-<div class="photo" id="ph"><div class="frame" id="fr"><img src="photo.jpg" alt="Fatih Güloğlu" width="640" height="960"></div></div>
-</header>
-</div>
-<div class="mq" aria-hidden="true"><div id="mq"></div></div>
-<div class="wrap">
-<section id="hakkimda" class="rv"><h2>Hakkımda</h2>
-<p>İstanbul Medipol Üniversitesi Bilgisayar Programcılığı bölümünden onur belgesiyle mezun oldum. Şu anda aynı üniversitede Yönetim Bilişim Sistemleri 3. sınıf öğrencisiyim.</p>
-<p>42 İstanbul’da proje tabanlı yazılım eğitimi alarak yazılım geliştirme, algoritmalar ve problem çözme alanlarında kendimi geliştiriyorum. 7Dimensions’taki stajımda kurumsal iş deneyimi kazandım.</p>
-<p>Öğrenmeye açık, çözüm odaklı ve ekip çalışmasına uyum sağlayan biriyim. Yeni teknolojileri takip edip edindiğim bilgiyi yenilikçi projelerde kullanmak istiyorum.</p></section>
+  <canvas id="grid" aria-hidden="true"></canvas>
+  <div id="bar"></div>
 
-<section id="deneyim" class="rv"><h2>Deneyim</h2>
-<div class="job"><time>04/2026 – 10/2026</time><div><h3>Yazılım Geliştirici</h3><div class="org">42 İstanbul</div><p>Takım çalışmasına dayalı haftalık yazılım projelerinde yer aldım. C ile kütüphane ve fonksiyon geliştirme deneyimi kazandım; Git ve Linux komutları konusunda bilgi birikimi edindim.</p></div></div>
-<div class="job"><time>06/2024 – 08/2024</time><div><h3>Yazılım Geliştirme Stajyeri</h3><div class="org">7Dimensions</div><p>Yazılım geliştirme ekibinde çeşitli projelerde görev aldım. Python ile veri işleme çözümleri geliştirdim, Excel tabanlı otomasyon süreçlerine katkı sağladım ve mobil uygulama geliştirme çalışmalarında yer aldım.</p></div></div></section>
+  <div class="wrap">
+    <nav aria-label="Ana menü">
+      <a href="#hakkimda">Hakkımda</a>
+      <a href="#deneyim">Deneyim</a>
+      <a href="#projeler">Projeler</a>
+      <a href="#yetenekler">Yetenekler</a>
+      <a href="#egitim">Eğitim</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
 
-<section id="projeler" class="rv"><h2>Projeler</h2>
-<div class="cards">
-<a class="proj" href="https://github.com/fatihguloglu34/Tunnel-to-Excel-Automation" target="_blank" rel="noopener"><h3>Tunnel to Excel Automation</h3><p>Tünel kazı verilerini Excel formatına dönüştüren Python otomasyonu. Manuel veri girişini azaltır, süreçleri hızlandırır ve veri doğruluğunu artırır.</p><span class="tag">Python</span><span class="tag">Excel</span><span class="go">GitHub’da incele</span></a>
-<a class="proj" href="https://github.com/fatihguloglu34/DGS_Kocum" target="_blank" rel="noopener"><h3>DGS Koçum</h3><p>DGS adaylarının çalışma planlarını oluşturup ilerlemelerini takip edebildiği, responsive arayüzlü web uygulaması.</p><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="go">GitHub’da incele</span></a>
-<a class="proj" href="https://github.com/fatihguloglu34/ATM-Application" target="_blank" rel="noopener"><h3>ATM Uygulaması</h3><p>Nesne yönelimli programlama ile geliştirilen ATM simülasyonu: para yatırma, para çekme, bakiye sorgulama ve kullanıcı işlemleri.</p><span class="tag">Java</span><span class="go">GitHub’da incele</span></a>
-</div>
-<div class="demo"><h3>Tunnel to Excel, kısaca</h3><p>Örnek veriyle çalışan basit bir gösterim. Gerçek proje verisi değildir.</p>
-<div class="dg"><div class="raw" id="raw"></div><div class="tbl" id="tbl"></div></div>
-<button id="go" type="button">Excel’e dönüştür</button></div></section>
+    <header class="hero">
+      <div>
+        <h1 id="name" aria-label="Fatih Güloğlu"></h1>
+        <p class="role"><b id="typed"></b><i></i></p>
+        <div class="cta">
+          <a class="btn main" href="#projeler">Projelerime bak</a>
+          <a class="btn" href="mailto:fatihguloglu34@gmail.com">E-posta gönder</a>
+        </div>
+      </div>
 
-<section id="yetenekler" class="rv"><h2>Yetenekler</h2>
-<div class="skills">
-<div><h3>Programlama</h3><ul><li>Python</li><li>C</li><li>JavaScript</li><li>HTML ve CSS</li><li>AppSheet</li></ul></div>
-<div><h3>Veritabanı</h3><ul><li>PostgreSQL</li><li>SQL</li></ul></div>
-<div><h3>Diğer</h3><ul><li>Git ve GitHub</li><li>Linux</li><li>Problem çözme ve algoritma geliştirme</li><li>Analitik düşünme</li></ul></div></div></section>
+      <div class="photo" id="ph">
+        <div class="frame" id="fr">
+          <img src="photo.jpg" alt="Fatih Güloğlu" width="640" height="960">
+        </div>
+      </div>
+    </header>
+  </div>
 
-<section id="egitim" class="rv"><h2>Eğitim ve sertifikalar</h2>
-<div class="two"><ul class="edu"><li><b>İstanbul Medipol Üniversitesi</b>Yönetim Bilişim Sistemleri<br><span>2025 – devam ediyor</span></li><li><b>İstanbul Medipol Üniversitesi</b>Bilgisayar Programcılığı, onur belgesiyle<br><span>2023 – 2025</span></li></ul>
-<ul><li>Python (Basic)</li><li>SQL (Basic)</li><li>SQL (Intermediate)</li><li>JavaScript (Basic)</li><li>Problem Solving (Basic)</li><li>Git ve GitHub</li><li>Siber Güvenlik</li></ul></div></section>
+  <div class="mq" aria-hidden="true">
+    <div id="mq"></div>
+  </div>
 
-<section id="iletisim" class="rv"><h2>İletişim</h2><p>Staj, iş fırsatları veya proje işbirlikleri için yazabilirsiniz.</p>
-<div class="cta"><a class="btn main" href="mailto:fatihguloglu34@gmail.com">fatihguloglu34@gmail.com</a><a class="btn" href="https://github.com/fatihguloglu34" rel="noopener">GitHub</a><a class="btn" href="https://www.linkedin.com/in/Fatih-G%C3%BClo%C4%9Flu" rel="noopener">LinkedIn</a></div></section>
-<footer>© 2026 Fatih Güloğlu</footer>
-</div>
-<button class="theme" id="tg" type="button" aria-label="Temayı değiştir">Tema</button>
-<script src="script.js"></script>
+  <div class="wrap">
+    <section id="hakkimda" class="rv">
+      <h2>Hakkımda</h2>
+      <p>İstanbul Medipol Üniversitesi Bilgisayar Programcılığı bölümünden onur belgesiyle mezun oldum. Şu anda aynı üniversitede Yönetim Bilişim Sistemleri 3. sınıf öğrencisiyim.</p>
+      <p>42 İstanbul’da proje tabanlı yazılım eğitimi alarak yazılım geliştirme, algoritmalar ve problem çözme alanlarında kendimi geliştiriyorum. 7Dimensions’taki stajımda kurumsal iş deneyimi kazandım.</p>
+      <p>Öğrenmeye açık, çözüm odaklı ve ekip çalışmasına uyum sağlayan biriyim. Yeni teknolojileri takip edip edindiğim bilgiyi yenilikçi projelerde kullanmak istiyorum.</p>
+    </section>
+
+    <section id="deneyim" class="rv">
+      <h2>Deneyim</h2>
+
+      <div class="job">
+        <time>04/2026 – 10/2026</time>
+        <div>
+          <h3>Yazılım Geliştirici</h3>
+          <div class="org">42 İstanbul</div>
+          <p>Takım çalışmasına dayalı haftalık yazılım projelerinde yer aldım. C ile kütüphane ve fonksiyon geliştirme deneyimi kazandım; Git ve Linux komutları konusunda bilgi birikimi edindim.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <time>06/2024 – 08/2024</time>
+        <div>
+          <h3>Yazılım Geliştirme Stajyeri</h3>
+          <div class="org">7Dimensions</div>
+          <p>Yazılım geliştirme ekibinde çeşitli projelerde görev aldım. Python ile veri işleme çözümleri geliştirdim, Excel tabanlı otomasyon süreçlerine katkı sağladım ve mobil uygulama geliştirme çalışmalarında yer aldım.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projeler" class="rv">
+      <h2>Projeler</h2>
+
+      <div class="cards">
+        <a class="proj" href="https://github.com/fatihguloglu34/Tunnel-to-Excel-Automation" target="_blank" rel="noopener">
+          <h3>Tunnel to Excel Automation</h3>
+          <p>Tünel kazı verilerini Excel formatına dönüştüren Python otomasyonu. Manuel veri girişini azaltır, süreçleri hızlandırır ve veri doğruluğunu artırır.</p>
+          <span class="tag">Python</span>
+          <span class="tag">Excel</span>
+          <span class="go">GitHub’da incele</span>
+        </a>
+
+        <a class="proj" href="https://github.com/fatihguloglu34/DGS_Kocum" target="_blank" rel="noopener">
+          <h3>DGS Koçum</h3>
+          <p>DGS adaylarının çalışma planlarını oluşturup ilerlemelerini takip edebildiği, responsive arayüzlü web uygulaması.</p>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="go">GitHub’da incele</span>
+        </a>
+
+        <a class="proj" href="https://github.com/fatihguloglu34/ATM-Application" target="_blank" rel="noopener">
+          <h3>ATM Uygulaması</h3>
+          <p>Nesne yönelimli programlama ile geliştirilen ATM simülasyonu: para yatırma, para çekme, bakiye sorgulama ve kullanıcı işlemleri.</p>
+          <span class="tag">Java</span>
+          <span class="go">GitHub’da incele</span>
+        </a>
+      </div>
+
+      <div class="demo">
+        <h3>Tunnel to Excel, kısaca</h3>
+        <p>Örnek veriyle çalışan basit bir gösterim. Gerçek proje verisi değildir.</p>
+        <div class="dg">
+          <div class="raw" id="raw"></div>
+          <div class="tbl" id="tbl"></div>
+        </div>
+        <button id="go" type="button">Excel’e dönüştür</button>
+      </div>
+    </section>
+
+    <section id="yetenekler" class="rv">
+      <h2>Yetenekler</h2>
+      <div class="skills">
+        <div>
+          <h3>Programlama</h3>
+          <ul>
+            <li>Python</li>
+            <li>C</li>
+            <li>JavaScript</li>
+            <li>HTML ve CSS</li>
+            <li>AppSheet</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Veritabanı</h3>
+          <ul>
+            <li>PostgreSQL</li>
+            <li>SQL</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Diğer</h3>
+          <ul>
+            <li>Git ve GitHub</li>
+            <li>Linux</li>
+            <li>Problem çözme ve algoritma geliştirme</li>
+            <li>Analitik düşünme</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="egitim" class="rv">
+      <h2>Eğitim ve sertifikalar</h2>
+      <div class="two">
+        <ul class="edu">
+          <li>
+            <b>İstanbul Medipol Üniversitesi</b>
+            Yönetim Bilişim Sistemleri<br>
+            <span>2025 – devam ediyor</span>
+          </li>
+          <li>
+            <b>İstanbul Medipol Üniversitesi</b>
+            Bilgisayar Programcılığı, onur belgesiyle<br>
+            <span>2023 – 2025</span>
+          </li>
+        </ul>
+
+        <ul>
+          <li>Python (Basic)</li>
+          <li>SQL (Basic)</li>
+          <li>SQL (Intermediate)</li>
+          <li>JavaScript (Basic)</li>
+          <li>Problem Solving (Basic)</li>
+          <li>Git ve GitHub</li>
+          <li>Siber Güvenlik</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="iletisim" class="rv">
+      <h2>İletişim</h2>
+      <p>Staj, iş fırsatları veya proje işbirlikleri için yazabilirsiniz.</p>
+      <div class="cta">
+        <a class="btn main" href="mailto:fatihguloglu34@gmail.com">fatihguloglu34@gmail.com</a>
+        <a class="btn" href="https://github.com/fatihguloglu34" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/Fatih-G%C3%BClo%C4%9Flu" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>© 2026 Fatih Güloğlu</footer>
+  </div>
+
+  <button class="theme" id="tg" type="button" aria-label="Temayı değiştir">Tema</button>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
