@@ -4,194 +4,798 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Fatih Güloğlu</title>
+  <title>Fatih Güloğlu — Yazılım Geliştirici</title>
+  <meta name="description" content="Fatih Güloğlu: 42 İstanbul ve Yönetim Bilişim Sistemleri öğrencisi. Python ile veri otomasyonu, C ile algoritmalar ve web projeleri — canlı demolarla.">
+  <meta name="author" content="Fatih Güloğlu">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#071114">
+  <link rel="canonical" href="https://fatihguloglu34.github.io/My-Own-Website/">
 
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="Fatih Güloğlu">
+  <meta property="og:title" content="Fatih Güloğlu — Yazılım Geliştirici">
+  <meta property="og:description" content="Python ile veri otomasyonu, C ile algoritmalar ve web projeleri. Projelerimi sitede canlı deneyebilirsin.">
+  <meta property="og:url" content="https://fatihguloglu34.github.io/My-Own-Website/">
+  <meta property="og:image" content="https://fatihguloglu34.github.io/My-Own-Website/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="style.css">
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add("js");
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+      } catch (e) {}
+      if (!root.getAttribute("data-theme")) {
+        root.setAttribute("data-theme", window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+      }
+      var seen = false;
+      try { seen = sessionStorage.getItem("intro-seen") === "1"; } catch (e) {}
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!seen && !reduce && !location.hash) root.classList.add("is-loading");
+      // Script yüklenemezse sayfa gizli kalmasın.
+      setTimeout(function () {
+        if (!root.classList.contains("ready")) root.classList.remove("js", "is-loading");
+      }, 5000);
+    })();
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Fatih Güloğlu",
+      "jobTitle": "Yazılım Geliştirici",
+      "url": "https://fatihguloglu34.github.io/My-Own-Website/",
+      "email": "mailto:fatihguloglu34@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "İstanbul", "addressCountry": "TR" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "İstanbul Medipol Üniversitesi" },
+      "sameAs": ["https://github.com/fatihguloglu34", "https://www.linkedin.com/in/fatihguloglu3/"]
+    }
+  </script>
 </head>
 
 <body>
-  <canvas id="grid" aria-hidden="true"></canvas>
-  <div id="bar"></div>
+  <a class="skip" href="#main">İçeriğe geç</a>
 
-  <div class="wrap">
-    <nav aria-label="Ana menü">
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-python" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></symbol>
+    <symbol id="i-c" viewBox="0 0 24 24"><path fill="currentColor" d="M16.5921 9.1962s-.354-3.298-3.627-3.39c-3.2741-.09-4.9552 2.474-4.9552 6.14 0 3.6651 1.858 6.5972 5.0451 6.5972 3.184 0 3.5381-3.665 3.5381-3.665l6.1041.365s.36 3.31-2.196 5.836c-2.552 2.5241-5.6901 2.9371-7.8762 2.9201-2.19-.017-5.2261.034-8.1602-2.97-2.938-3.0101-3.436-5.9302-3.436-8.8002 0-2.8701.556-6.6702 4.047-9.5502C7.444.72 9.849 0 12.254 0c10.0422 0 10.7172 9.2602 10.7172 9.2602z"/></symbol>
+    <symbol id="i-js" viewBox="0 0 24 24"><path fill="currentColor" d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></symbol>
+    <symbol id="i-html" viewBox="0 0 24 24"><path fill="currentColor" d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></symbol>
+    <symbol id="i-css" viewBox="0 0 24 24"><path fill="currentColor" d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63"/></symbol>
+    <symbol id="i-pg" viewBox="0 0 24 24"><path fill="currentColor" d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698zM2.371 11.8765c-.7435-2.4358-1.1779-4.8851-1.2123-5.5719-.1086-2.1714.4171-3.6829 1.5623-4.4927 1.8367-1.2986 4.8398-.5408 6.108-.13-.0032.0032-.0066.0061-.0098.0094-2.0238 2.044-1.9758 5.536-1.9708 5.7495-.0002.0823.0066.1989.0162.3593.0348.5873.0996 1.6804-.0735 2.9184-.1609 1.1504.1937 2.2764.9728 3.0892.0806.0841.1648.1631.2518.2374-.3468.3714-1.1004 1.1926-1.9025 2.1576-.5677.6825-.9597.5517-1.0886.5087-.3919-.1307-.813-.5871-1.2381-1.3223-.4796-.839-.9635-2.0317-1.4155-3.5126zm6.0072 5.0871c-.1711-.0428-.3271-.1132-.4322-.1772.0889-.0394.2374-.0902.4833-.1409 1.2833-.2641 1.4815-.4506 1.9143-1.0002.0992-.126.2116-.2687.3673-.4426a.3549.3549 0 0 0 .0737-.1298c.1708-.1513.2724-.1099.4369-.0417.156.0646.3078.26.3695.4752.0291.1016.0619.2945-.0452.4444-.9043 1.2658-2.2216 1.2494-3.1676 1.0128zm2.094-3.988-.0525.141c-.133.3566-.2567.6881-.3334 1.003-.6674-.0021-1.3168-.2872-1.8105-.8024-.6279-.6551-.9131-1.5664-.7825-2.5004.1828-1.3079.1153-2.4468.079-3.0586-.005-.0857-.0095-.1607-.0122-.2199.2957-.2621 1.6659-.9962 2.6429-.7724.4459.1022.7176.4057.8305.928.5846 2.7038.0774 3.8307-.3302 4.7363-.084.1866-.1633.3629-.2311.5454zm7.3637 4.5725c-.0169.1768-.0358.376-.0618.5959l-.146.4383a.3547.3547 0 0 0-.0182.1077c-.0059.4747-.054.6489-.115.8693-.0634.2292-.1353.4891-.1794 1.0575-.11 1.4143-.8782 2.2267-2.4172 2.5565-1.5155.3251-1.7843-.4968-2.0212-1.2217a6.5824 6.5824 0 0 0-.0769-.2266c-.2154-.5858-.1911-1.4119-.1574-2.5551.0165-.5612-.0249-1.9013-.3302-2.6462.0044-.2932.0106-.5909.019-.8918a.3529.3529 0 0 0-.0153-.1126 1.4927 1.4927 0 0 0-.0439-.208c-.1226-.4283-.4213-.7866-.7797-.9351-.1424-.059-.4038-.1672-.7178-.0869.067-.276.1831-.5875.309-.9249l.0529-.142c.0595-.16.134-.3257.213-.5012.4265-.9476 1.0106-2.2453.3766-5.1772-.2374-1.0981-1.0304-1.6343-2.2324-1.5098-.7207.0746-1.3799.3654-1.7088.5321a5.6716 5.6716 0 0 0-.1958.1041c.0918-1.1064.4386-3.1741 1.7357-4.4823a4.0306 4.0306 0 0 1 .3033-.276.3532.3532 0 0 0 .1447-.0644c.7524-.5706 1.6945-.8506 2.802-.8325.4091.0067.8017.0339 1.1742.081 1.939.3544 3.2439 1.4468 4.0359 2.3827.8143.9623 1.2552 1.9315 1.4312 2.4543-1.3232-.1346-2.2234.1268-2.6797.779-.9926 1.4189.543 4.1729 1.2811 5.4964.1353.2426.2522.4522.2889.5413.2403.5825.5515.9713.7787 1.2552.0696.087.1372.1714.1885.245-.4008.1155-1.1208.3825-1.0552 1.717-.0123.1563-.0423.4469-.0834.8148-.0461.2077-.0702.4603-.0994.7662zm.8905-1.6211c-.0405-.8316.2691-.9185.5967-1.0105a2.8566 2.8566 0 0 0 .135-.0406 1.202 1.202 0 0 0 .1342.103c.5703.3765 1.5823.4213 3.0068.1344-.2016.1769-.5189.3994-.9533.6011-.4098.1903-1.0957.333-1.7473.3636-.7197.0336-1.0859-.0807-1.1721-.151zm.5695-9.2712c-.0059.3508-.0542.6692-.1054 1.0017-.055.3576-.112.7274-.1264 1.1762-.0142.4368.0404.8909.0932 1.3301.1066.887.216 1.8003-.2075 2.7014a3.5272 3.5272 0 0 1-.1876-.3856c-.0527-.1276-.1669-.3326-.3251-.6162-.6156-1.1041-2.0574-3.6896-1.3193-4.7446.3795-.5427 1.3408-.5661 2.1781-.463zm.2284 7.0137a12.3762 12.3762 0 0 0-.0853-.1074l-.0355-.0444c.7262-1.1995.5842-2.3862.4578-3.4385-.0519-.4318-.1009-.8396-.0885-1.2226.0129-.4061.0666-.7543.1185-1.0911.0639-.415.1288-.8443.1109-1.3505.0134-.0531.0188-.1158.0118-.1902-.0457-.4855-.5999-1.938-1.7294-3.253-.6076-.7073-1.4896-1.4972-2.6889-2.0395.5251-.1066 1.2328-.2035 2.0244-.1859 2.0515.0456 3.6746.8135 4.8242 2.2824a.908.908 0 0 1 .0667.1002c.7231 1.3556-.2762 6.2751-2.9867 10.5405zm-8.8166-6.1162c-.025.1794-.3089.4225-.6211.4225a.5821.5821 0 0 1-.0809-.0056c-.1873-.026-.3765-.144-.5059-.3156-.0458-.0605-.1203-.178-.1055-.2844.0055-.0401.0261-.0985.0925-.1488.1182-.0894.3518-.1226.6096-.0867.3163.0441.6426.1938.6113.4186zm7.9305-.4114c.0111.0792-.049.201-.1531.3102-.0683.0717-.212.1961-.4079.2232a.5456.5456 0 0 1-.075.0052c-.2935 0-.5414-.2344-.5607-.3717-.024-.1765.2641-.3106.5611-.352.297-.0414.6111.0088.6356.1851z"/></symbol>
+    <symbol id="i-git" viewBox="0 0 24 24"><path fill="currentColor" d="M13.09 23.549a1.54 1.54 0 0 1-2.18 0L.451 13.089a1.54 1.54 0 0 1 0-2.179l7.191-7.19 2.733 2.733a1.85 1.85 0 0 0 .964 2.326v6.66a1.849 1.849 0 1 0 1.54 0V8.957l2.508 2.508a1.85 1.85 0 1 0 1.09-1.09l-2.634-2.634a1.85 1.85 0 0 0-2.378-2.377L8.73 2.63 10.91.451a1.54 1.54 0 0 1 2.179 0l10.459 10.46a1.54 1.54 0 0 1 0 2.179z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="i-linux" viewBox="0 0 24 24"><path fill="currentColor" d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 00-.205.334 1.18 1.18 0 00-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 01-.018-.2v-.02a1.772 1.772 0 01.15-.768c.082-.22.232-.406.43-.533a.985.985 0 01.594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 00-.166-.267.248.248 0 00-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 00-.12.27.944.944 0 00-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 01-.131.068 2.62 2.62 0 01-.275-.402 1.772 1.772 0 01-.155-.667 1.759 1.759 0 01.08-.668 1.43 1.43 0 01.283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 01.016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 01-.448-.067 3.566 3.566 0 01-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 00-.402-.533 1.45 1.45 0 00-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 00.314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 01.647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 01-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.03.05v.02h.003z"/></symbol>
+    <symbol id="i-42" viewBox="0 0 24 24"><path fill="currentColor" d="M19.581 16.851H24v-4.439ZM24 3.574h-4.419v4.42l-4.419 4.418v4.44h4.419v-4.44L24 7.993Zm-4.419 0h-4.419v4.42zm-6.324 8.838H4.419l8.838-8.838H8.838L0 12.412v3.595h8.838v4.419h4.419z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0z"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3z"/><path fill="currentColor" d="M5 13.2v3.6C5 18.6 8.1 20 12 20s7-1.4 7-3.2v-3.6l-7 3.8-7-3.8z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15l12-7.5z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></g></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.66 3.58 3 8 3s8-1.34 8-3v-13"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></g></symbol>
+    <symbol id="i-app" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><circle cx="17.25" cy="17.25" r="3.75"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5a3 3 0 0 0-3 3 3 3 0 0 0-2 5.2A3.2 3.2 0 0 0 6.5 17 3 3 0 0 0 12 18.5V5a2.5 2.5 0 0 0-3-1.5z"/><path d="M15 3.5a3 3 0 0 1 3 3 3 3 0 0 1 2 5.2 3.2 3.2 0 0 1-2.5 5.3A3 3 0 0 1 12 18.5"/></g></symbol>
+    <symbol id="i-medal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M8.6 10.1 5.5 2.5h4.2L12 7.2l2.3-4.7h4.2l-3.1 7.6"/><path d="m12 12.2.95 1.9 2.1.3-1.5 1.5.35 2.1-1.9-1-1.9 1 .35-2.1-1.5-1.5 2.1-.3z"/></g></symbol>
+    <symbol id="i-sheet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M3 15h18M9 3v18"/></g></symbol>
+    <symbol id="i-term" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m4 17 6-6-6-6M12 19h8"/></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></symbol>
+  </svg>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-row">
+      <span>Fatih Güloğlu</span>
+      <span>Portfolyo ©2026</span>
+    </div>
+    <div class="loader-count"><span id="loaderNum">0</span><small>%</small></div>
+    <div class="loader-row">
+      <span>Python · C · Veri otomasyonu</span>
+      <span class="loader-line"><i id="loaderLine"></i></span>
+    </div>
+  </div>
+
+  <canvas class="topo" id="topo" aria-hidden="true"></canvas>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Fatih Güloğlu, sayfanın başına dön">
+      <span class="brand-mark" aria-hidden="true">FG</span>
+      <span class="brand-name">Fatih Güloğlu</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Bölümler">
+      <span class="nav-indicator" aria-hidden="true"></span>
       <a href="#hakkimda">Hakkımda</a>
       <a href="#deneyim">Deneyim</a>
       <a href="#projeler">Projeler</a>
       <a href="#yetenekler">Yetenekler</a>
       <a href="#egitim">Eğitim</a>
-      <a href="#iletisim">İletişim</a>
     </nav>
 
-    <header class="hero">
+    <div class="nav-actions">
+      <button class="icon-btn theme-btn" id="themeBtn" type="button" aria-label="Temayı değiştir">
+        <svg class="i-sun"><use href="#i-sun"/></svg>
+        <svg class="i-moon"><use href="#i-moon"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm nav-cta" href="#iletisim" data-magnetic="0.25"><span>İletişime geç</span></a>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menüyü aç">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu">
+    <nav aria-label="Mobil menü">
+      <a href="#hakkimda" style="--i:0"><span><small>01</small>Hakkımda</span></a>
+      <a href="#deneyim" style="--i:1"><span><small>02</small>Deneyim</span></a>
+      <a href="#projeler" style="--i:2"><span><small>03</small>Projeler</span></a>
+      <a href="#yetenekler" style="--i:3"><span><small>04</small>Yetenekler</span></a>
+      <a href="#egitim" style="--i:4"><span><small>05</small>Eğitim</span></a>
+      <a href="#iletisim" style="--i:5"><span><small>06</small>İletişim</span></a>
+    </nav>
+    <div class="menu-foot">
+      <a href="mailto:fatihguloglu34@gmail.com">fatihguloglu34@gmail.com</a>
       <div>
-        <h1 id="name" aria-label="Fatih Güloğlu"></h1>
-        <p class="role"><b id="typed"></b><i></i></p>
-        <div class="cta">
-          <a class="btn main" href="#projeler">Projelerime bak</a>
-          <a class="btn" href="mailto:fatihguloglu34@gmail.com">E-posta gönder</a>
-        </div>
+        <a href="https://github.com/fatihguloglu34" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/fatihguloglu3/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-
-      <div class="photo" id="ph">
-        <div class="frame" id="fr">
-          <img src="photo.jpg" alt="Fatih Güloğlu" width="640" height="960">
-        </div>
-      </div>
-    </header>
+    </div>
   </div>
 
-  <div class="mq" aria-hidden="true">
-    <div id="mq"></div>
-  </div>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <h1 class="sr-only" id="hero-title">Fatih Güloğlu — Yazılım geliştirici</h1>
 
-  <div class="wrap">
-    <section id="hakkimda" class="rv">
-      <h2>Hakkımda</h2>
-      <p>İstanbul Medipol Üniversitesi Bilgisayar Programcılığı bölümünden onur belgesiyle mezun oldum. Şu anda aynı üniversitede Yönetim Bilişim Sistemleri 3. sınıf öğrencisiyim.</p>
-      <p>42 İstanbul’da proje tabanlı yazılım eğitimi alarak yazılım geliştirme, algoritmalar ve problem çözme alanlarında kendimi geliştiriyorum. 7Dimensions’taki stajımda kurumsal iş deneyimi kazandım.</p>
-      <p>Öğrenmeye açık, çözüm odaklı ve ekip çalışmasına uyum sağlayan biriyim. Yeni teknolojileri takip edip edindiğim bilgiyi yenilikçi projelerde kullanmak istiyorum.</p>
-    </section>
-
-    <section id="deneyim" class="rv">
-      <h2>Deneyim</h2>
-
-      <div class="job">
-        <time>04/2026 – 10/2026</time>
-        <div>
-          <h3>Yazılım Geliştirici</h3>
-          <div class="org">42 İstanbul</div>
-          <p>Takım çalışmasına dayalı haftalık yazılım projelerinde yer aldım. C ile kütüphane ve fonksiyon geliştirme deneyimi kazandım; Git ve Linux komutları konusunda bilgi birikimi edindim.</p>
-        </div>
+      <div class="hero-meta">
+        <p class="status" data-intro style="--d:1"><span class="status-dot" aria-hidden="true"></span>Yeni fırsatlara açık</p>
       </div>
 
-      <div class="job">
-        <time>06/2024 – 08/2024</time>
-        <div>
-          <h3>Yazılım Geliştirme Stajyeri</h3>
-          <div class="org">7Dimensions</div>
-          <p>Yazılım geliştirme ekibinde çeşitli projelerde görev aldım. Python ile veri işleme çözümleri geliştirdim, Excel tabanlı otomasyon süreçlerine katkı sağladım ve mobil uygulama geliştirme çalışmalarında yer aldım.</p>
+      <div class="hero-content">
+        <div class="hero-intro">
+          <p class="hero-role" data-intro style="--d:3"><span aria-hidden="true">//</span> <span id="typed">Yazılım geliştirici</span><i class="caret" aria-hidden="true"></i></p>
+          <p class="hero-lede" data-intro style="--d:4">Veriyi düzenleyen, süreçleri <em>otomatikleştiren</em> yazılımlar.</p>
+          <div class="hero-cta" data-intro style="--d:5">
+            <a class="btn btn-primary" href="#projeler" data-magnetic><span>Projelerime bak</span><svg class="ic"><use href="#i-down"/></svg></a>
+            <a class="btn btn-ghost" href="mailto:fatihguloglu34@gmail.com" data-magnetic><span>E-posta gönder</span></a>
+          </div>
+        </div>
+
+        <dl class="hero-now">
+          <div data-intro style="--d:4"><dt>Şu an</dt><dd>42 İstanbul · C ve algoritmalar</dd></div>
+          <div data-intro style="--d:5"><dt>Okul</dt><dd>Medipol · YBS, 3. sınıf</dd></div>
+          <div data-intro style="--d:6"><dt>Odak</dt><dd>Python ile veri otomasyonu</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-stage" aria-hidden="true">
+        <div class="hero-ring"></div>
+        <div class="hero-orb"></div>
+        <div class="name-layer">
+          <div class="name-row"><span>Fatih</span> <span>Güloğlu</span></div>
         </div>
       </div>
     </section>
 
-    <section id="projeler" class="rv">
-      <h2>Projeler</h2>
+    <div class="tapes" aria-hidden="true">
+      <div class="tape tape-a">
+        <div class="tape-track" data-marquee="-1" data-speed="70">
+          <span>Python</span><svg><use href="#i-spark"/></svg>
+          <span>C</span><svg><use href="#i-spark"/></svg>
+          <span>JavaScript</span><svg><use href="#i-spark"/></svg>
+          <span>SQL</span><svg><use href="#i-spark"/></svg>
+          <span>PostgreSQL</span><svg><use href="#i-spark"/></svg>
+          <span>Git</span><svg><use href="#i-spark"/></svg>
+          <span>Linux</span><svg><use href="#i-spark"/></svg>
+          <span>HTML</span><svg><use href="#i-spark"/></svg>
+          <span>CSS</span><svg><use href="#i-spark"/></svg>
+          <span>Excel otomasyonu</span><svg><use href="#i-spark"/></svg>
+        </div>
+      </div>
+      <div class="tape tape-b">
+        <div class="tape-track" data-marquee="1" data-speed="50">
+          <span>Veri</span><svg><use href="#i-spark"/></svg>
+          <span>Otomasyon</span><svg><use href="#i-spark"/></svg>
+          <span>Algoritmalar</span><svg><use href="#i-spark"/></svg>
+          <span>Problem çözme</span><svg><use href="#i-spark"/></svg>
+          <span>Analitik düşünme</span><svg><use href="#i-spark"/></svg>
+          <span>Takım çalışması</span><svg><use href="#i-spark"/></svg>
+        </div>
+      </div>
+    </div>
 
-      <div class="cards">
-        <a class="proj" href="https://github.com/fatihguloglu34/Tunnel-to-Excel-Automation" target="_blank" rel="noopener">
-          <h3>Tunnel to Excel Automation</h3>
-          <p>Tünel kazı verilerini Excel formatına dönüştüren Python otomasyonu. Manuel veri girişini azaltır, süreçleri hızlandırır ve veri doğruluğunu artırır.</p>
-          <span class="tag">Python</span>
-          <span class="tag">Excel</span>
-          <span class="go">GitHub’da incele</span>
+    <section class="section about" id="hakkimda" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>01</span> Hakkımda</p>
+          <h2 class="section-title" id="about-title" data-split>Öğrenmeye açık, <em>çözüm odaklı.</em></h2>
+        </header>
+
+        <div class="about-grid">
+          <p class="about-statement" data-reveal>İstanbul Medipol Üniversitesi Bilgisayar Programcılığı bölümünden <em>onur belgesiyle</em> mezun oldum. Şimdi aynı üniversitede Yönetim Bilişim Sistemleri 3. sınıf öğrencisiyim ve <em>42 İstanbul</em>’da proje tabanlı eğitimle yazılım geliştirme, algoritmalar ve problem çözme üzerine kendimi geliştiriyorum.</p>
+
+          <div class="about-side" data-reveal>
+            <figure class="about-photo">
+              <img src="img/fatih.jpg" width="640" height="800" alt="Fatih Güloğlu" loading="lazy">
+            </figure>
+            <p>7Dimensions’taki stajımda kurumsal iş deneyimi kazandım: Python ile veri işleme, Excel tabanlı otomasyon ve mobil uygulama geliştirme.</p>
+            <p>Ekip çalışmasına uyum sağlayan biriyim. Yeni teknolojileri takip edip edindiğim bilgiyi yenilikçi projelerde kullanmak istiyorum.</p>
+          </div>
+        </div>
+
+        <div class="bento">
+          <article class="card bento-honor" data-glow data-reveal>
+            <svg class="bento-icon"><use href="#i-medal"/></svg>
+            <div>
+              <p class="card-kicker">2023 – 2025</p>
+              <h3>Onur belgesiyle mezuniyet</h3>
+              <p>Bilgisayar Programcılığı · İstanbul Medipol Üniversitesi</p>
+            </div>
+            <span class="seal" aria-hidden="true">
+              <svg viewBox="0 0 100 100"><defs><path id="seal-path" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text><textPath href="#seal-path">ONUR BELGESİ · ONUR BELGESİ · ONUR BELGESİ ·</textPath></text></svg>
+              <svg class="seal-star"><use href="#i-spark"/></svg>
+            </span>
+          </article>
+
+          <article class="card bento-uni" data-glow data-reveal>
+            <p class="card-kicker">Şu an</p>
+            <p class="bento-big">YBS</p>
+            <p>Yönetim Bilişim Sistemleri, 3. sınıf · Medipol</p>
+          </article>
+
+          <article class="card bento-42" data-glow data-reveal>
+            <svg class="bento-42-logo"><use href="#i-42"/></svg>
+            <div>
+              <h3>42 İstanbul</h3>
+              <p>Öğretmensiz, proje tabanlı ve akran değerlendirmeli yazılım eğitimi. C, algoritmalar, Git ve Linux.</p>
+            </div>
+            <a class="link-arrow" href="#c-projeleri">C projelerim <svg class="ic"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card bento-num" data-glow data-reveal>
+            <p class="bento-big"><span data-count="7">7</span></p>
+            <p>sertifika: Python, SQL, JavaScript, problem çözme, Git ve siber güvenlik</p>
+          </article>
+
+          <article class="card bento-num" data-glow data-reveal>
+            <p class="bento-big"><span data-count="43">43</span></p>
+            <p>fonksiyonluk kendi C kütüphanem: <code>libft.a</code></p>
+          </article>
+
+          <article class="card bento-city" data-glow data-reveal>
+            <svg class="bento-contours" viewBox="0 0 200 120" aria-hidden="true">
+              <path d="M10 92c26-30 58-38 86-30s52 2 70-18 26-28 30-30"/>
+              <path d="M8 104c30-28 66-34 96-26s50 0 70-20 24-30 32-34"/>
+              <path d="M30 70c18-16 40-20 60-16s36-2 48-14 18-16 26-18"/>
+              <path d="M62 52c10-8 22-10 32-8s22-2 30-10"/>
+            </svg>
+            <p class="card-kicker">Konum</p>
+            <p class="bento-city-name">İstanbul</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section exp" id="deneyim" aria-labelledby="exp-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>02</span> Deneyim</p>
+          <h2 class="section-title" id="exp-title" data-split>Öğrendiklerimi <em>sahada</em> kullandığım yerler.</h2>
+        </header>
+
+        <div class="timeline">
+          <span class="timeline-rail" aria-hidden="true"><span class="timeline-fill"></span></span>
+          <ol class="timeline-list">
+            <li class="job" data-glow data-reveal>
+              <div class="job-when">
+                <span class="job-dot" aria-hidden="true"></span>
+                <time datetime="2026-04">04/2026</time> – <time datetime="2026-10">10/2026</time>
+              </div>
+              <div class="job-head">
+                <span class="job-logo" aria-hidden="true"><svg><use href="#i-42"/></svg></span>
+                <h3>Yazılım Geliştirici</h3>
+                <p class="job-org">42 İstanbul</p>
+              </div>
+              <div class="job-body">
+                <p>Takım çalışmasına dayalı haftalık yazılım projelerinde yer aldım. C ile kütüphane ve fonksiyon geliştirme deneyimi kazandım; Git ve Linux komutları konusunda bilgi birikimi edindim.</p>
+                <ul class="chips">
+                  <li>C</li>
+                  <li>Git</li>
+                  <li>Linux</li>
+                  <li>Takım çalışması</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="job" data-glow data-reveal>
+              <div class="job-when">
+                <span class="job-dot" aria-hidden="true"></span>
+                <time datetime="2024-06">06/2024</time> – <time datetime="2024-08">08/2024</time>
+              </div>
+              <div class="job-head">
+                <span class="job-logo job-logo-text" aria-hidden="true">7D</span>
+                <h3>Yazılım Geliştirme Stajyeri</h3>
+                <p class="job-org">7Dimensions</p>
+              </div>
+              <div class="job-body">
+                <p>Yazılım geliştirme ekibinde çeşitli projelerde görev aldım. Python ile veri işleme çözümleri geliştirdim, Excel tabanlı otomasyon süreçlerine katkı sağladım ve mobil uygulama geliştirme çalışmalarında yer aldım.</p>
+                <ul class="chips">
+                  <li>Python</li>
+                  <li>Veri işleme</li>
+                  <li>Excel otomasyonu</li>
+                  <li>Mobil</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projeler" aria-labelledby="proj-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>03</span> Projeler</p>
+          <h2 class="section-title" id="proj-title" data-split>Seçili projeler, <em>canlı</em> demolarıyla.</h2>
+          <p class="section-lede" data-reveal>Okuyup geçme, dene: her projenin çalışma mantığını kendi kodundan uyarlayıp burada, tarayıcında çalışır hale getirdim.</p>
+        </header>
+
+        <div class="stack">
+          <article class="project" style="--i:0" aria-labelledby="p1-title">
+            <div class="project-info">
+              <p class="project-index"><span>01</span> / 03 · Masaüstü uygulaması</p>
+              <h3 class="project-title" id="p1-title">Tunnel to Excel Automation</h3>
+              <p class="project-desc">Tünel kesit hesapları için veri hazırlığını otomatikleştirir. PyQt5 arayüzüne girilen yönetmelik, beton sınıfı ve kesit kalınlıklarını openpyxl ile biçimlendirilmiş bir Excel raporuna dönüştürür; elastisite modülünü yönetmeliğe göre kendisi bulur.</p>
+              <ul class="chips">
+                <li>Python</li>
+                <li>PyQt5</li>
+                <li>openpyxl</li>
+                <li>Excel</li>
+              </ul>
+              <ul class="project-facts">
+                <li><b>1–4</b> tünel için tek tıkla rapor</li>
+                <li><b>TS500 · Eurocode</b> elastisite modülü tablosu</li>
+              </ul>
+              <a class="link-arrow" href="https://github.com/fatihguloglu34/Tunnel-to-Excel-Automation" target="_blank" rel="noopener">GitHub’da incele <svg class="ic"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="project-demo">
+              <div class="window tunnel" id="tunnelDemo">
+                <div class="window-bar">
+                  <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="window-title">kesit3.ui — Tunnel to Excel</span>
+                  <span class="window-tag">demo</span>
+                </div>
+                <div class="tunnel-body">
+                  <form class="tunnel-form" novalidate>
+                    <fieldset class="field">
+                      <legend class="field-label">Yönetmelik</legend>
+                      <div class="seg">
+                        <label><input type="radio" name="reg" value="TS500" checked><span>TS500</span></label>
+                        <label><input type="radio" name="reg" value="EUROCODE"><span>EUROCODE</span></label>
+                      </div>
+                    </fieldset>
+                    <div class="field">
+                      <label class="field-label" for="tClass">Beton sınıfı</label>
+                      <select class="select" id="tClass" name="cls">
+                        <option>C25</option>
+                        <option selected>C30</option>
+                        <option>C35</option>
+                        <option>C40</option>
+                        <option>C45</option>
+                        <option>C50</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <span class="field-label" id="tCountLabel">Tünel sayısı</span>
+                      <div class="stepper" role="group" aria-labelledby="tCountLabel">
+                        <button type="button" data-step="-1" aria-label="Tünel sayısını azalt">−</button>
+                        <output data-count-out aria-live="polite">2</output>
+                        <button type="button" data-step="1" aria-label="Tünel sayısını artır">+</button>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <span class="field-label">Kemer / invert (cm)</span>
+                      <div class="thick" data-thick></div>
+                    </div>
+                    <button class="run-btn" type="submit"><svg class="ic"><use href="#i-sheet"/></svg>Excel’e aktar</button>
+                  </form>
+
+                  <div class="sheet">
+                    <div class="sheet-file"><svg class="ic"><use href="#i-sheet"/></svg><span data-file>exact_replication2.xlsx</span></div>
+                    <div class="sheet-formula"><span class="sheet-name" data-cellname>A1</span><span class="sheet-fx">fx</span><span class="sheet-value" data-cellvalue></span></div>
+                    <div class="sheet-scroll">
+                      <div class="sheet-grid" data-grid></div>
+                      <span class="sheet-sel" data-sel aria-hidden="true"></span>
+                      <p class="sheet-hint" data-hint>Formu doldur, <b>Excel’e aktar</b>’a bas.</p>
+                    </div>
+                    <div class="sheet-toast" data-toast role="status"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="demo-note">Projedeki gerçek hücre yerleşimi ve TS500/Eurocode E modülü tablosuyla çalışır. Dosya oluşturmaz.</p>
+            </div>
+          </article>
+
+          <article class="project" style="--i:1" aria-labelledby="p2-title">
+            <div class="project-info">
+              <p class="project-index"><span>02</span> / 03 · Web platformu</p>
+              <h3 class="project-title" id="p2-title">DGS Koçum</h3>
+              <p class="project-desc">DGS’ye hazırlanan öğrencileri uzman koçlarla buluşturan, responsive arayüzlü web platformu: koç profilleri, kişisel çalışma planı ve birebir takip. Arkasında öğrenci–koç eşleşmesi, görüşmeler, ilerleme raporları ve ödemeler için PostgreSQL şeması var.</p>
+              <ul class="chips">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>PostgreSQL</li>
+              </ul>
+              <ul class="project-facts">
+                <li><b>14</b> tabloluk ilişkisel veritabanı şeması</li>
+                <li><b>Responsive</b> arayüz, mobil menü</li>
+              </ul>
+              <a class="link-arrow" href="https://github.com/fatihguloglu34/DGS_Kocum" target="_blank" rel="noopener">GitHub’da incele <svg class="ic"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="project-demo">
+              <div class="dgs-wrap" id="dgsDemo">
+                <div class="window browser">
+                  <div class="window-bar">
+                    <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="browser-url">dgs-kocum / index.html</span>
+                  </div>
+                  <div class="browser-view" role="img" aria-label="DGS Koçum ana sayfasının önizlemesi">
+                    <div class="dgs" data-dgs-page>
+                      <div class="dgs-nav">
+                        <span class="dgs-logo"><svg><use href="#i-cap"/></svg><span><b>DGS<i>Koçum</i></b><small>Hedefine Bizimle Ulaş</small></span></span>
+                        <span class="dgs-links"><span class="on">Ana Sayfa</span><span>Hakkımızda</span><span>Koçlarımız</span><span>Hizmetler</span><span>İletişim</span></span>
+                        <span class="dgs-login">Giriş Yap</span>
+                      </div>
+                      <div class="dgs-hero">
+                        <div>
+                          <p class="dgs-h1">DGS’de Hedefinize Ulaşın</p>
+                          <p>Uzman DGS koçlarımızla sınav sürecinizi profesyonelce yönetin, hedefinize ulaşın.</p>
+                          <span class="dgs-btn">Koçlarımızla Tanışın</span>
+                        </div>
+                        <div class="dgs-art" aria-hidden="true">
+                          <span class="dgs-art-card a"><i></i><i></i><i></i></span>
+                          <span class="dgs-art-card b"><b>%92</b><i></i></span>
+                          <span class="dgs-art-ring"></span>
+                        </div>
+                      </div>
+                      <div class="dgs-section">
+                        <p class="dgs-h2">Neden DGS Koçluğu?</p>
+                        <div class="dgs-features">
+                          <div><svg><use href="#i-cap"/></svg><b>Uzman DGS Koçları</b><span>DGS sınavında başarılı olmuş, deneyimli koçlarla çalışın.</span></div>
+                          <div><svg><use href="#i-sheet"/></svg><b>Kişisel Çalışma Planı</b><span>Size özel hazırlanmış çalışma programı ve stratejiler.</span></div>
+                          <div><svg><use href="#i-check"/></svg><b>Birebir Takip</b><span>Günlük ilerleme takibi ve motivasyon desteği.</span></div>
+                        </div>
+                      </div>
+                      <div class="dgs-section">
+                        <p class="dgs-h2">DGS Koçlarımız</p>
+                        <div class="dgs-coaches">
+                          <div><span class="dgs-avatar">AY</span><b>Ahmet Yılmaz</b><small>DGS Matematik Uzmanı</small><span class="dgs-stars">★ 4.9 · 150+ öğrenci</span></div>
+                          <div><span class="dgs-avatar b">AD</span><b>Ayşe Demir</b><small>DGS Türkçe Uzmanı</small><span class="dgs-stars">★ 4.8 · 120+ öğrenci</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="schema">
+                  <p class="schema-head"><svg class="ic"><use href="#i-db"/></svg>schema.sql · PostgreSQL</p>
+                  <ul>
+                    <li><b>kullanicilar</b></li>
+                    <li><b>ogrenciler</b><span>→ kullanicilar</span></li>
+                    <li><b>koclar</b><span>→ kullanicilar</span></li>
+                    <li><b>ogrenci_koc_eslesme</b><span>→ ogrenciler, koclar</span></li>
+                    <li><b>gorusmeler</b><span>→ eşleşme</span></li>
+                    <li><b>ilerleme_raporlari</b><span>→ eşleşme</span></li>
+                    <li><b>odemeler</b><span>→ eşleşme</span></li>
+                  </ul>
+                </div>
+              </div>
+              <p class="demo-note">Projenin ana sayfasının ve veritabanı şemasının sadeleştirilmiş önizlemesi (örnek koç verileri projedeki gibidir).</p>
+            </div>
+          </article>
+
+          <article class="project" style="--i:2" aria-labelledby="p3-title">
+            <div class="project-info">
+              <p class="project-index"><span>03</span> / 03 · Konsol uygulaması</p>
+              <h3 class="project-title" id="p3-title">ATM Uygulaması</h3>
+              <p class="project-desc">Konsolda çalışan banka ATM simülasyonu: kullanıcı girişi, bakiye sorgulama, para çekme ve para yatırma. Bakiye yetmediğinde ek hesap devreye girer; para yatırırken önce ek hesaptaki eksik kapatılır.</p>
+              <ul class="chips">
+                <li>Python</li>
+                <li>Konsol</li>
+                <li>İş kuralları</li>
+              </ul>
+              <ul class="project-facts">
+                <li><b>Hemen dene:</b> menüden 1–4 arası bir seçim yap</li>
+                <li><b>Ek hesap</b> kuralları kodla birebir aynı</li>
+              </ul>
+              <a class="link-arrow" href="https://github.com/fatihguloglu34/ATM-Application" target="_blank" rel="noopener">GitHub’da incele <svg class="ic"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="project-demo">
+              <div class="window term" id="atmDemo">
+                <div class="window-bar">
+                  <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="window-title">fatih@atm: ~ — python3 main.py</span>
+                  <span class="window-tag">canlı</span>
+                </div>
+                <div class="term-out" data-out role="log" aria-live="polite"></div>
+                <form class="term-in" data-form>
+                  <label class="sr-only" for="atmInput">ATM girdisi</label>
+                  <span class="term-prompt" aria-hidden="true">›</span>
+                  <input id="atmInput" data-input autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" placeholder="Bir seçim yaz, Enter’a bas">
+                </form>
+                <div class="term-keys" data-keys></div>
+              </div>
+              <p class="demo-note">Python kodundaki menü, mesajlar ve ek hesap kuralları JavaScript’e aynen taşındı.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="school" id="c-projeleri">
+          <header class="school-head">
+            <p class="eyebrow" data-reveal><span>03.1</span> 42 İstanbul</p>
+            <h3 class="school-title" data-split>C ile <em>temellere</em> iniyorum.</h3>
+            <p data-reveal>42 müfredatındaki projelerim. Hepsi <code>-Wall -Wextra -Werror</code> ile derlenir ve 42’nin kod normlarına (Norminette) uyar. Görselleştirici, push_swap’in sıralama stratejilerini tarayıcında yeniden canlandırır.</p>
+          </header>
+
+          <div class="school-grid">
+            <div class="ps" id="psDemo" data-reveal>
+              <div class="ps-top">
+                <div class="ps-title">
+                  <svg class="ic"><use href="#i-term"/></svg>
+                  <span>push_swap görselleştirici</span>
+                </div>
+                <div class="seg seg-sm" role="radiogroup" aria-label="Sıralama stratejisi">
+                  <label><input type="radio" name="ps-strategy" value="adaptive" checked><span>adaptive</span></label>
+                  <label><input type="radio" name="ps-strategy" value="simple"><span>simple</span></label>
+                  <label><input type="radio" name="ps-strategy" value="medium"><span>medium</span></label>
+                  <label><input type="radio" name="ps-strategy" value="complex"><span>complex</span></label>
+                </div>
+              </div>
+
+              <div class="ps-stage" data-stage>
+                <div class="ps-col" data-col="a"><span>stack a</span></div>
+                <div class="ps-col" data-col="b"><span>stack b</span></div>
+              </div>
+
+              <div class="ps-stats">
+                <div><span>disorder</span><b data-stat="disorder">0.00</b></div>
+                <div><span>strateji</span><b data-stat="strategy">—</b></div>
+                <div><span>işlem</span><b data-stat="ops">0</b></div>
+              </div>
+              <p class="ps-ops" data-oplog aria-hidden="true"></p>
+
+              <div class="ps-controls">
+                <button class="mini-btn" type="button" data-ps="shuffle"><svg class="ic"><use href="#i-shuffle"/></svg>Karıştır</button>
+                <button class="mini-btn" type="button" data-ps="nearly"><svg class="ic"><use href="#i-shuffle"/></svg>Az karıştır</button>
+                <button class="mini-btn mini-primary" type="button" data-ps="run"><svg class="ic"><use href="#i-play"/></svg><span>Sırala</span></button>
+              </div>
+            </div>
+
+            <div class="c-cards">
+              <a class="card c-card" href="https://github.com/fatihguloglu34/Libft-42school" target="_blank" rel="noopener" data-glow data-reveal>
+                <span class="c-card-top"><b>Libft</b><svg class="ic"><use href="#i-arrow"/></svg></span>
+                <code><span class="tk-t">char</span>  **<span class="tk-f">ft_split</span>(<span class="tk-t">char const</span> *s, <span class="tk-t">char</span> c);</code>
+                <p>43 fonksiyonluk statik kütüphane: libc fonksiyonlarının yeniden yazımı, ek string araçları ve bağlı listeler.</p>
+              </a>
+              <a class="card c-card" href="https://github.com/fatihguloglu34/Ft_printf" target="_blank" rel="noopener" data-glow data-reveal>
+                <span class="c-card-top"><b>ft_printf</b><svg class="ic"><use href="#i-arrow"/></svg></span>
+                <code><span class="tk-t">int</span>  <span class="tk-f">ft_printf</span>(<span class="tk-t">const char</span> *format, ...);</code>
+                <p>printf’in yeniden yazımı: değişken sayıda argümanla (stdarg.h) %c %s %p %d %i %u %x %X %% dönüşümleri.</p>
+              </a>
+              <a class="card c-card" href="https://github.com/fatihguloglu34/Get_Next_Line" target="_blank" rel="noopener" data-glow data-reveal>
+                <span class="c-card-top"><b>get_next_line</b><svg class="ic"><use href="#i-arrow"/></svg></span>
+                <code><span class="tk-t">char</span>  *<span class="tk-f">get_next_line</span>(<span class="tk-t">int</span> fd);</code>
+                <p>Her çağrıda dosyadan tek satır okur. Durumu static değişkenle korur; bonus kısmı birden fazla fd’yi aynı anda yönetir.</p>
+              </a>
+              <a class="card c-card" href="https://github.com/fatihguloglu34/Push_Swap" target="_blank" rel="noopener" data-glow data-reveal>
+                <span class="c-card-top"><b>push_swap</b><svg class="ic"><use href="#i-arrow"/></svg></span>
+                <code><span class="tk-p">$</span> ./push_swap --bench 4 67 3 87 23</code>
+                <p>İki stack ve 11 işlemle sıralama, dört strateji. İki kişilik ekip projesi; benim payım: stack işlemleri, girdi doğrulama, bellek yönetimi, benchmark ve işlem sayacı.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a class="all-projects" href="https://github.com/fatihguloglu34?tab=repositories" target="_blank" rel="noopener">
+          <span>Tüm projeler GitHub’da</span>
+          <svg class="ic"><use href="#i-arrow"/></svg>
         </a>
+      </div>
+    </section>
 
-        <a class="proj" href="https://github.com/fatihguloglu34/DGS_Kocum" target="_blank" rel="noopener">
-          <h3>DGS Koçum</h3>
-          <p>DGS adaylarının çalışma planlarını oluşturup ilerlemelerini takip edebildiği, responsive arayüzlü web uygulaması.</p>
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="go">GitHub’da incele</span>
+    <section class="section skills" id="yetenekler" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>04</span> Yetenekler</p>
+          <h2 class="section-title" id="skills-title" data-split>Araç <em>kutum.</em></h2>
+        </header>
+
+        <div class="skills-grid">
+          <article class="card skill" style="--brand:#3776ab" data-glow data-reveal>
+            <span class="skill-cat">Programlama</span>
+            <span class="skill-icons"><svg><use href="#i-python"/></svg></span>
+            <h3>Python</h3>
+            <p>Veri işleme, Excel otomasyonu ve PyQt5 ile masaüstü arayüzleri.</p>
+          </article>
+          <article class="card skill" style="--brand:#a8b9cc" data-glow data-reveal>
+            <span class="skill-cat">Programlama</span>
+            <span class="skill-icons"><svg><use href="#i-c"/></svg></span>
+            <h3>C</h3>
+            <p>42 İstanbul: libft, ft_printf, get_next_line ve push_swap.</p>
+          </article>
+          <article class="card skill" style="--brand:#f7df1e" data-glow data-reveal>
+            <span class="skill-cat">Programlama</span>
+            <span class="skill-icons"><svg><use href="#i-js"/></svg></span>
+            <h3>JavaScript</h3>
+            <p>DGS Koçum ve bu site: etkileşimli, framework’süz arayüzler.</p>
+          </article>
+          <article class="card skill" style="--brand:#e34f26" data-glow data-reveal>
+            <span class="skill-cat">Programlama</span>
+            <span class="skill-icons"><svg><use href="#i-html"/></svg><svg><use href="#i-css"/></svg></span>
+            <h3>HTML ve CSS</h3>
+            <p>Responsive, erişilebilir ve özenli arayüzler.</p>
+          </article>
+          <article class="card skill" style="--brand:#4169e1" data-glow data-reveal>
+            <span class="skill-cat">Veritabanı</span>
+            <span class="skill-icons"><svg><use href="#i-pg"/></svg><svg><use href="#i-db"/></svg></span>
+            <h3>PostgreSQL ve SQL</h3>
+            <p>İlişkisel şema tasarımı, yabancı anahtarlar ve sorgular.</p>
+          </article>
+          <article class="card skill" style="--brand:#f05032" data-glow data-reveal>
+            <span class="skill-cat">Araçlar</span>
+            <span class="skill-icons"><svg><use href="#i-git"/></svg><svg><use href="#i-github"/></svg></span>
+            <h3>Git ve GitHub</h3>
+            <p>Sürüm kontrolü ve ekip içi iş akışı; projelerimin hepsi GitHub’da.</p>
+          </article>
+          <article class="card skill" style="--brand:#fcc624" data-glow data-reveal>
+            <span class="skill-cat">Araçlar</span>
+            <span class="skill-icons"><svg><use href="#i-linux"/></svg></span>
+            <h3>Linux</h3>
+            <p>Terminal ve shell komutları, Makefile ile derleme.</p>
+          </article>
+          <article class="card skill" style="--brand:#1fa463" data-glow data-reveal>
+            <span class="skill-cat">Araçlar</span>
+            <span class="skill-icons"><svg><use href="#i-app"/></svg></span>
+            <h3>AppSheet</h3>
+            <p>Kodsuz uygulama geliştirme.</p>
+          </article>
+          <article class="card skill skill-wide" style="--brand:var(--accent)" data-glow data-reveal>
+            <span class="skill-cat">Yaklaşım</span>
+            <span class="skill-icons"><svg><use href="#i-brain"/></svg></span>
+            <h3>Problem çözme ve algoritma geliştirme</h3>
+            <p>Analitik düşünme, sıralama stratejileri, karmaşıklık analizi. Bir problemi önce parçalarına ayırırım.</p>
+          </article>
+          <article class="card skill skill-wide skill-goal" data-reveal>
+            <span class="skill-cat">Hedef</span>
+            <span class="skill-icons"><svg><use href="#i-db"/></svg></span>
+            <h3>Veri mühendisliği yolunda</h3>
+            <p>Python ile veri otomasyonundan başlayan yolumu veri mühendisliğine doğru genişletiyorum.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section edu" id="egitim" aria-labelledby="edu-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>05</span> Eğitim</p>
+          <h2 class="section-title" id="edu-title" data-split>Eğitim ve <em>sertifikalar.</em></h2>
+        </header>
+
+        <div class="edu-grid">
+          <ol class="edu-list">
+            <li class="card edu-item" data-glow data-reveal>
+              <p class="edu-when">2025 – devam ediyor</p>
+              <h3>Yönetim Bilişim Sistemleri</h3>
+              <p>İstanbul Medipol Üniversitesi · Lisans, 3. sınıf</p>
+            </li>
+            <li class="card edu-item" data-glow data-reveal>
+              <p class="edu-when">2023 – 2025</p>
+              <h3>Bilgisayar Programcılığı</h3>
+              <p>İstanbul Medipol Üniversitesi · Ön lisans, <strong>onur belgesiyle</strong></p>
+              <span class="edu-badge"><svg class="ic"><use href="#i-medal"/></svg>Onur belgesi</span>
+            </li>
+          </ol>
+
+          <div class="certs-wrap" data-reveal>
+            <p class="certs-title">Sertifikalar <span>7</span></p>
+            <ul class="certs">
+              <li class="cert"><span class="cert-ic" style="--brand:#3776ab"><svg><use href="#i-python"/></svg></span><span class="cert-name">Python</span><span class="cert-level">Basic</span></li>
+              <li class="cert"><span class="cert-ic" style="--brand:#4169e1"><svg><use href="#i-db"/></svg></span><span class="cert-name">SQL</span><span class="cert-level">Basic</span></li>
+              <li class="cert"><span class="cert-ic" style="--brand:#4169e1"><svg><use href="#i-db"/></svg></span><span class="cert-name">SQL</span><span class="cert-level">Intermediate</span></li>
+              <li class="cert"><span class="cert-ic" style="--brand:#e0b400"><svg><use href="#i-js"/></svg></span><span class="cert-name">JavaScript</span><span class="cert-level">Basic</span></li>
+              <li class="cert"><span class="cert-ic" style="--brand:var(--accent)"><svg><use href="#i-brain"/></svg></span><span class="cert-name">Problem Solving</span><span class="cert-level">Basic</span></li>
+              <li class="cert"><span class="cert-ic" style="--brand:#f05032"><svg><use href="#i-git"/></svg></span><span class="cert-name">Git ve GitHub</span></li>
+              <li class="cert"><span class="cert-ic" style="--brand:#2fbf71"><svg><use href="#i-shield"/></svg></span><span class="cert-name">Siber Güvenlik</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="iletisim" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow" data-reveal><span>06</span> İletişim</p>
+          <h2 class="contact-title" id="contact-title" data-split>Birlikte bir şey <em>inşa edelim.</em></h2>
+          <p class="contact-lede" data-reveal>Staj, iş fırsatları veya proje işbirlikleri için yazabilirsiniz.</p>
+
+          <div class="mail-row" data-reveal>
+            <a class="mail-link" href="mailto:fatihguloglu34@gmail.com">fatihguloglu34@gmail.com</a>
+            <button class="copy-btn" type="button" data-copy="fatihguloglu34@gmail.com">
+              <svg class="ic ic-copy"><use href="#i-copy"/></svg>
+              <svg class="ic ic-check"><use href="#i-check"/></svg>
+              <span data-copy-label>Kopyala</span>
+            </button>
+          </div>
+
+          <div class="socials" data-reveal>
+            <a class="social" href="https://github.com/fatihguloglu34" target="_blank" rel="noopener" data-magnetic="0.3"><svg><use href="#i-github"/></svg><span>GitHub</span></a>
+            <a class="social" href="https://www.linkedin.com/in/fatihguloglu3/" target="_blank" rel="noopener" data-magnetic="0.3"><svg><use href="#i-linkedin"/></svg><span>LinkedIn</span></a>
+          </div>
+        </div>
+
+        <a class="orbit" id="orbit" href="mailto:fatihguloglu34@gmail.com" data-magnetic="0.4" aria-label="E-posta gönder">
+          <svg class="orbit-text" viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="orbit-path" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1-156 0"/></defs>
+            <text><textPath href="#orbit-path">E-POSTA GÖNDER · BANA YAZ · E-POSTA GÖNDER · BANA YAZ ·</textPath></text>
+          </svg>
+          <svg class="orbit-icon" aria-hidden="true"><use href="#i-arrow"/></svg>
         </a>
-
-        <a class="proj" href="https://github.com/fatihguloglu34/ATM-Application" target="_blank" rel="noopener">
-          <h3>ATM Uygulaması</h3>
-          <p>Nesne yönelimli programlama ile geliştirilen ATM simülasyonu: para yatırma, para çekme, bakiye sorgulama ve kullanıcı işlemleri.</p>
-          <span class="tag">Java</span>
-          <span class="go">GitHub’da incele</span>
-        </a>
-      </div>
-
-      <div class="demo">
-        <h3>Tunnel to Excel, kısaca</h3>
-        <p>Örnek veriyle çalışan basit bir gösterim. Gerçek proje verisi değildir.</p>
-        <div class="dg">
-          <div class="raw" id="raw"></div>
-          <div class="tbl" id="tbl"></div>
-        </div>
-        <button id="go" type="button">Excel’e dönüştür</button>
       </div>
     </section>
+  </main>
 
-    <section id="yetenekler" class="rv">
-      <h2>Yetenekler</h2>
-      <div class="skills">
-        <div>
-          <h3>Programlama</h3>
-          <ul>
-            <li>Python</li>
-            <li>C</li>
-            <li>JavaScript</li>
-            <li>HTML ve CSS</li>
-            <li>AppSheet</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Veritabanı</h3>
-          <ul>
-            <li>PostgreSQL</li>
-            <li>SQL</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Diğer</h3>
-          <ul>
-            <li>Git ve GitHub</li>
-            <li>Linux</li>
-            <li>Problem çözme ve algoritma geliştirme</li>
-            <li>Analitik düşünme</li>
-          </ul>
-        </div>
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-col">
+        <p class="footer-label">Menü</p>
+        <a href="#hakkimda">Hakkımda</a>
+        <a href="#deneyim">Deneyim</a>
+        <a href="#projeler">Projeler</a>
+        <a href="#yetenekler">Yetenekler</a>
+        <a href="#egitim">Eğitim</a>
       </div>
-    </section>
-
-    <section id="egitim" class="rv">
-      <h2>Eğitim ve sertifikalar</h2>
-      <div class="two">
-        <ul class="edu">
-          <li>
-            <b>İstanbul Medipol Üniversitesi</b>
-            Yönetim Bilişim Sistemleri<br>
-            <span>2025 – devam ediyor</span>
-          </li>
-          <li>
-            <b>İstanbul Medipol Üniversitesi</b>
-            Bilgisayar Programcılığı, onur belgesiyle<br>
-            <span>2023 – 2025</span>
-          </li>
-        </ul>
-
-        <ul>
-          <li>Python (Basic)</li>
-          <li>SQL (Basic)</li>
-          <li>SQL (Intermediate)</li>
-          <li>JavaScript (Basic)</li>
-          <li>Problem Solving (Basic)</li>
-          <li>Git ve GitHub</li>
-          <li>Siber Güvenlik</li>
-        </ul>
+      <div class="footer-col">
+        <p class="footer-label">Bağlantılar</p>
+        <a href="https://github.com/fatihguloglu34" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/fatihguloglu3/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:fatihguloglu34@gmail.com">E-posta</a>
       </div>
-    </section>
+      <a class="to-top" href="#top" data-magnetic="0.3" aria-label="Sayfanın başına dön"><svg class="ic"><use href="#i-up"/></svg></a>
+    </div>
 
-    <section id="iletisim" class="rv">
-      <h2>İletişim</h2>
-      <p>Staj, iş fırsatları veya proje işbirlikleri için yazabilirsiniz.</p>
-      <div class="cta">
-        <a class="btn main" href="mailto:fatihguloglu34@gmail.com">fatihguloglu34@gmail.com</a>
-        <a class="btn" href="https://github.com/fatihguloglu34" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/fatihguloglu3/" rel="noopener">LinkedIn</a>
-      </div>
-    </section>
+    <div class="container footer-bottom">
+      <p>© 2026 Fatih Güloğlu</p>
+    </div>
+  </footer>
 
-    <footer>© 2026 Fatih Güloğlu</footer>
-  </div>
-
-  <button class="theme" id="tg" type="button" aria-label="Temayı değiştir">Tema</button>
-
-  <script src="script.js"></script>
+  <script src="js/aurora.js" defer></script>
+  <script src="js/demos.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>
