@@ -38,9 +38,6 @@
 
   requestAnimationFrame(loop);
 
-  /* ---------------------------------------------------------
-     Açılış ekranı
-     --------------------------------------------------------- */
   function runLoader() {
     if (!root.classList.contains("is-loading")) return Promise.resolve();
 
@@ -76,9 +73,6 @@
     });
   }
 
-  /* ---------------------------------------------------------
-     Akıcı kaydırma (Lenis, CDN'den; yüklenemezse doğal kaydırma)
-     --------------------------------------------------------- */
   function setupSmoothScroll() {
     if (reduceMotion || !finePointer) return;
     const script = document.createElement("script");
@@ -96,9 +90,6 @@
     else target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
   }
 
-  /* ---------------------------------------------------------
-     Tek animasyon döngüsü
-     --------------------------------------------------------- */
   function loop(now) {
     scroll.y = window.scrollY;
     const delta = scroll.y - scroll.last;
@@ -127,9 +118,6 @@
     window.Topo.setScroll(scroll.y);
   }
 
-  /* ---------------------------------------------------------
-     Hero: küre paralaksı, arka plan tepe noktası
-     --------------------------------------------------------- */
   function setupHero() {
     const section = $(".hero");
     const stage = $(".hero-stage");
@@ -178,9 +166,6 @@
     };
   }
 
-  /* ---------------------------------------------------------
-     Kayan şeritler ve isim (kaydırma yönüne ve hızına tepki verir)
-     --------------------------------------------------------- */
   function setupMarquees() {
     const groups = [];
 
@@ -192,7 +177,7 @@
       const first = group.els[0];
       const units = Array.from(first.children);
       group.unitCount = units.length;
-      // Ölçü: tek takımın genişliği
+
       group.unit = first.scrollWidth;
       if (!group.unit) return;
       const copies = Math.ceil((window.innerWidth * 2) / group.unit) + 1;
@@ -243,9 +228,6 @@
     };
   }
 
-  /* ---------------------------------------------------------
-     Metin animasyonları
-     --------------------------------------------------------- */
   function wrapWords(el, wordClass, innerClass) {
     let index = 0;
     const walk = (node) => {
@@ -297,7 +279,6 @@
       return;
     }
 
-    // Aynı ızgaradaki kartlara sıralı gecikme
     $$("[data-reveal]").forEach((el) => {
       if (el.style.getPropertyValue("--d")) return;
       const siblings = Array.from(el.parentElement.children).filter((c) => c.hasAttribute("data-reveal"));
@@ -417,9 +398,6 @@
     });
   }
 
-  /* ---------------------------------------------------------
-     Navigasyon
-     --------------------------------------------------------- */
   function setupNav() {
     const links = $$(".nav-links a");
     const indicator = $(".nav-indicator");
@@ -501,7 +479,6 @@
       const target = id === "#top" ? $(".hero") : id.length > 1 ? $(id) : null;
       if (!target) return;
       e.preventDefault();
-      // Menü kapanırken kaydırmayı bir an beklet
       const delay = root.classList.contains("menu-open") ? 400 : 0;
       setTimeout(() => {
         scrollToTarget(target);
@@ -513,9 +490,6 @@
     });
   }
 
-  /* ---------------------------------------------------------
-     Projeler: üst üste binen kartlar
-     --------------------------------------------------------- */
   function setupProjectStack() {
     const cards = $$(".project");
     const query = window.matchMedia("(min-width: 1024px) and (min-height: 760px)");
@@ -557,9 +531,6 @@
     };
   }
 
-  /* ---------------------------------------------------------
-     Kart parlaması, mıknatıslı butonlar, özel imleç
-     --------------------------------------------------------- */
   function setupGlow() {
     if (!finePointer) return;
     document.addEventListener("pointermove", (e) => {

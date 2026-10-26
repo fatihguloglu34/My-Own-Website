@@ -1,5 +1,3 @@
-/* Aurora arka plan: amber ve petrol mavisi ışık bulutları yavaşça akar.
-   Portrenin arkasında sıcak bir parıltı durur, fareyi hafif bir ışık takip eder. */
 (function () {
   const canvas = document.getElementById("topo");
   if (!canvas) return;
@@ -91,7 +89,6 @@
       p.y -= uScroll;
       float t = uTime * 0.045;
 
-      // Bulutların kıvrılması için alanı bük
       vec2 warp = vec2(snoise(vec3(p * 0.7, t)), snoise(vec3(p * 0.7 + 5.2, t)));
       float amber = snoise(vec3(p * 0.85 + warp * 0.7, t * 0.8));
       float teal = snoise(vec3(p * 0.75 - warp * 0.6 + 3.7, t * 0.65));
@@ -118,7 +115,6 @@
       float vig = smoothstep(1.2, 0.25, length((q - 0.5) * vec2(1.0, 1.25)));
       col = mix(col, col * vig, uVignette);
 
-      // Renk geçişlerinde bantlanmayı önle
       col += (hash(frag + uTime) - 0.5) / 255.0 * 1.5;
 
       gl_FragColor = vec4(col, 1.0);
@@ -194,7 +190,6 @@
     state.vignette = document.documentElement.getAttribute("data-theme") === "light" ? 0 : 0.4;
   }
 
-  // Yumuşak bir görüntü olduğu için düşük çözünürlük yeterli ve hızlı.
   function resize() {
     const rect = canvas.getBoundingClientRect();
     const cssW = Math.max(1, rect.width);

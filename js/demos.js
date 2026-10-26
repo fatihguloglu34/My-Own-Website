@@ -1,4 +1,3 @@
-/* Proje demoları: her biri ilgili projenin gerçek kodundaki mantıktan uyarlandı. */
 (function () {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -19,10 +18,6 @@
   setupPushSwapDemo(document.getElementById("psDemo"));
   setupDgsPreview(document.getElementById("dgsDemo"));
 
-  /* ---------------------------------------------------------
-     Tunnel to Excel Automation
-     main.py: get_elasticity_modulus(), write_to_excel()
-     --------------------------------------------------------- */
   function setupTunnelDemo(root) {
     if (!root) return;
 
@@ -179,10 +174,6 @@
     renderSheet([], false);
   }
 
-  /* ---------------------------------------------------------
-     ATM Uygulaması
-     main.py: login(), menu(), BakiyeSorgulama(), ParaCekme(), ParaYatırma()
-     --------------------------------------------------------- */
   function setupAtmDemo(root) {
     if (!root) return;
 
@@ -196,7 +187,6 @@
     let pending = 0;
     let started = false;
 
-    // Python'un float yazımı: 20000.0, 2500.5
     function py(value) {
       if (typeof value === "string") return value;
       return Number.isInteger(value) ? value + ".0" : String(value);
@@ -367,7 +357,7 @@
       if (mode === "overdraft") {
         if (value === "e") {
           const kullanilacak = pending - parseFloat(hesap.bakiye);
-          hesap.bakiye = "0"; // Python'da int 0: "0 TL" yazar
+          hesap.bakiye = "0";
           hesap.ekHesap = parseFloat(hesap.ekHesap) - kullanilacak;
           println("Paranızı alabilirsiniz.", "ok");
         } else {
@@ -397,10 +387,6 @@
     });
   }
 
-  /* ---------------------------------------------------------
-     push_swap görselleştirici
-     simple O(n²) · medium O(n√n) · complex (radix) O(n log n) · adaptive
-     --------------------------------------------------------- */
   function setupPushSwapDemo(root) {
     if (!root) return;
 
@@ -510,7 +496,6 @@
       return arr;
     }
 
-    /* Stratejiler işlem listesi üretir; görselleştirme bu listeyi oynatır. */
     function plan(strategy, start) {
       const A = start.slice();
       const B = [];
@@ -647,9 +632,6 @@
     whenVisible(root, () => setTimeout(() => { if (!running) run(); }, 600));
   }
 
-  /* ---------------------------------------------------------
-     DGS Koçum önizlemesi: görünürken sayfayı yavaşça kaydırır
-     --------------------------------------------------------- */
   function setupDgsPreview(root) {
     if (!root || reduceMotion) return;
     const view = root.querySelector(".browser-view");

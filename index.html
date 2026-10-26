@@ -45,7 +45,6 @@
       try { seen = sessionStorage.getItem("intro-seen") === "1"; } catch (e) {}
       var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (!seen && !reduce && !location.hash) root.classList.add("is-loading");
-      // Script yüklenemezse sayfa gizli kalmasın.
       setTimeout(function () {
         if (!root.classList.contains("ready")) root.classList.remove("js", "is-loading");
       }, 5000);
