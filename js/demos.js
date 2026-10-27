@@ -14,7 +14,7 @@
   }
 
   setupTunnelDemo(document.getElementById("tunnelDemo"));
-  setupAtmDemo(document.getElementById("atmDemo"));
+  setupGiseDemo(document.getElementById("giseDemo"));
   setupPushSwapDemo(document.getElementById("psDemo"));
   setupDgsPreview(document.getElementById("dgsDemo"));
 
@@ -174,217 +174,151 @@
     renderSheet([], false);
   }
 
-  function setupAtmDemo(root) {
+  function setupGiseDemo(root) {
     if (!root) return;
 
     const out = root.querySelector("[data-out]");
-    const formEl = root.querySelector("[data-form]");
-    const input = root.querySelector("[data-input]");
-    const keys = root.querySelector("[data-keys]");
+    const map = root.querySelector("[data-map]");
+    const okEl = root.querySelector("[data-ok]");
+    const conflictEl = root.querySelector("[data-conflict]");
+    const buttons = root.querySelectorAll("[data-run]");
+    const nodes = {};
+    root.querySelectorAll("[data-node]").forEach((node) => { nodes[node.dataset.node] = node; });
 
-    let hesap;
-    let mode = "boot";
-    let pending = 0;
-    let started = false;
+    const ROWS = "ABCDEF";
+    const COLS = 12;
+    const seats = [];
+    let running = false;
 
-    function py(value) {
-      if (typeof value === "string") return value;
-      return Number.isInteger(value) ? value + ".0" : String(value);
-    }
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, reduceMotion ? 0 : ms));
+    const hex = (n) => Array.from({ length: n }, () => "0123456789ABCDEF"[Math.floor(Math.random() * 16)]).join("");
 
-    function print(text, cls) {
-      const line = document.createElement("span");
-      if (cls) line.className = cls;
-      line.textContent = text;
-      out.appendChild(line);
+    function say(...parts) {
+      const row = document.createElement("div");
+      parts.forEach((part) => {
+        const span = document.createElement("span");
+        if (Array.isArray(part)) {
+          span.textContent = part[0];
+          span.className = part[1];
+        } else {
+          span.textContent = part;
+        }
+        row.append(span);
+      });
+      out.append(row);
       out.scrollTop = out.scrollHeight;
     }
 
-    function println(text, cls) {
-      print((text || "") + "\n", cls);
+    function step(name, state) {
+      nodes[name].className = state;
     }
 
-    function setKeys(list) {
-      keys.innerHTML = "";
-      list.forEach(([value, label]) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.innerHTML = label ? "<b>" + value + "</b>" + label : value;
-        button.addEventListener("click", () => submit(String(value)));
-        keys.appendChild(button);
-      });
-    }
-
-    function showMenu() {
-      println("Merhaba, " + hesap.ad);
-      println("1- Bakiye Sorgulama");
-      println("2- Para Çekme");
-      println("3- Para Yatırma");
-      println("4- Çıkış Yap");
-      print("Yapmak istediğiniz işlemi seçiniz: ", "acc");
-      mode = "menu";
-      input.setAttribute("inputmode", "numeric");
-      setKeys([[1, "Bakiye"], [2, "Para çek"], [3, "Para yatır"], [4, "Çıkış"]]);
-    }
-
-    function askAmount(type) {
-      print(type === "withdraw" ? "Çekmek istediğiniz miktarı giriniz: " : "Yatırmak istediğiniz miktarı giriniz: ", "acc");
-      mode = type;
-      setKeys(type === "withdraw"
-        ? [["500"], ["5000"], ["22000"], ["30000"]]
-        : [["1000"], ["3000"], ["10000"]]);
-    }
-
-    function boot() {
-      out.innerHTML = "";
-      hesap = { ad: "Fatih Güloğlu", bakiye: "20000", ekHesap: "3000", ekHesapLimiti: "5000" };
-      setKeys([]);
-      mode = "boot";
-      const script = [
-        ["$ python3 main.py\n", "dim"],
-        ["Username: ", null],
-        ["fatih\n", "usr"],
-        ["Password: ", null],
-        ["****\n", "usr"],
-      ];
-      let i = 0;
-      const next = () => {
-        if (i < script.length) {
-          print(script[i][0], script[i][1]);
-          i++;
-          setTimeout(next, reduceMotion ? 0 : 260);
-        } else {
-          println();
-          showMenu();
-        }
-      };
-      next();
-    }
-
-    function bakiyeSorgulama() {
-      println("Bakiye: " + py(hesap.bakiye) + " TL", "ok");
-      println("Ek Bakiye: " + py(hesap.ekHesap) + " TL", "ok");
-      println();
-    }
-
-    function paraCekme(miktar) {
-      if (parseFloat(hesap.bakiye) >= miktar) {
-        hesap.bakiye = parseFloat(hesap.bakiye) - miktar;
-        println("Paranızı alabilirsiniz.", "ok");
-        println();
-        return true;
+    for (const row of ROWS) {
+      for (let n = 1; n <= COLS; n++) {
+        const el = document.createElement("i");
+        el.dataset.id = `${row}-${n}`;
+        seats.push(el);
+        map.append(el);
       }
-      const toplam = parseFloat(hesap.bakiye) + parseFloat(hesap.ekHesap);
-      if (toplam >= miktar) {
-        pending = miktar;
-        print("Ek hesap kullanılsın mı? (e/h): ", "acc");
-        mode = "overdraft";
-        input.setAttribute("inputmode", "text");
-        setKeys([["e", " evet"], ["h", " hayır"]]);
-        return false;
-      }
-      println("Yetersiz bakiye.", "err");
-      println();
-      return true;
     }
 
-    function paraYatirma(miktar) {
-      const limit = parseFloat(hesap.ekHesapLimiti);
-      const mevcut = parseFloat(hesap.ekHesap);
-      if (mevcut < limit) {
-        const eksik = limit - mevcut;
-        if (miktar >= eksik) {
-          hesap.ekHesap = limit;
-          hesap.bakiye = parseFloat(hesap.bakiye) + (miktar - eksik);
-          println(py(eksik) + " TL ek hesaba yatırıldı, kalan " + py(miktar - eksik) + " TL ana bakiyeye eklendi.", "ok");
+    function resetMap() {
+      seats.forEach((el) => { el.className = Math.random() < 0.3 ? "sold" : ""; });
+      Object.keys(nodes).forEach((name) => step(name, ""));
+      okEl.textContent = "0";
+      conflictEl.textContent = "0";
+      out.replaceChildren();
+    }
+
+    async function run(mode) {
+      if (running) return;
+      running = true;
+      buttons.forEach((b) => { b.disabled = true; });
+      resetMap();
+
+      const free = seats.filter((el, i) => !el.classList.contains("sold") && i < COLS * 3);
+      const seat = free[Math.floor(Math.random() * free.length)];
+      const label = `VIP ${seat.dataset.id}`;
+      const winner = 1 + Math.floor(Math.random() * 100);
+      seat.classList.add("target");
+
+      say(["$ ", "acc"], "make race");
+      say(["100 kullanıcı", "usr"], ` aynı anda ${label} koltuğuna tıklıyor…`);
+      await wait(700);
+
+      step("api", "on");
+      const winAt = Math.floor(Math.random() * 20);
+      for (let i = 0; i < 100; i++) {
+        if (i === winAt) {
+          okEl.textContent = "1";
+          seat.classList.add("mine");
         } else {
-          hesap.ekHesap = mevcut + miktar;
-          println("Tüm para (" + py(miktar) + " TL) ek hesaba yatırıldı.", "ok");
+          conflictEl.textContent = String(i + (i > winAt ? 0 : 1));
+          if (i < winAt) seat.classList.toggle("held");
         }
+        if (i % 4 === 0) await wait(24);
+      }
+      seat.classList.remove("held");
+      say(["POST /holds ×100", "usr"], ["  516 ms", "dim"]);
+      say(["  201 ×1   ", "ok"], `kullanıcı #${winner} koltuğu 2 dk tuttu`);
+      say(["  409 ×99  ", "err"], ["Lua script: hold:{etkinlik}:" + seat.dataset.id + " zaten dolu", "dim"]);
+      await wait(900);
+
+      say(["POST /orders ×20", "usr"], ["  Idempotency-Key: " + hex(8).toLowerCase() + "…", "dim"]);
+      say(["  201 ×1 · 200 ×19  ", "ok"], ["çift tıklama tek sipariş oldu", "dim"]);
+      step("api", "done");
+      step("pg", "on");
+      await wait(700);
+      say(["BEGIN", "acc"], ["  UPDATE seats … WHERE status='available'", "dim"]);
+      say(["      ", "dim"], ["INSERT orders, outbox(order.created)  ", "dim"], ["COMMIT", "acc"]);
+      seat.className = "reserved";
+      await wait(800);
+
+      step("pg", "done");
+      step("mq", "on");
+      say(["relay", "usr"], "     → gise.events  order.created");
+      await wait(800);
+      step("mq", "done");
+      step("pay", "on");
+
+      if (mode === "fail") {
+        await wait(700);
+        step("pay", "err");
+        say(["payments", "usr"], ["  ✗ banka işlemi onaylamadı", "err"], "  → payment.failed");
+        await wait(800);
+        seat.className = "freed";
+        say(["telafi", "acc"], `    sipariş iptal, ${label} herkesin ekranında yeniden boş`);
+        step("tix", "skip");
+        step("mail", "on");
+        await wait(700);
+        say(["notify", "usr"], "    ✉ ödeme alınamadı e-postası gönderildi");
+        step("mail", "done");
+        say(["✓ Koltuk kaybolmadı, sipariş tutarlı kaldı", "ok"]);
       } else {
-        hesap.bakiye = parseFloat(hesap.bakiye) + miktar;
-        println(py(miktar) + " TL ana bakiyeye yatırıldı.", "ok");
+        await wait(700);
+        say(["payments", "usr"], ["  ✗ sağlayıcı zaman aşımı", "err"], ["  → payments.retry (1 sn)", "dim"]);
+        await wait(1100);
+        say(["payments", "usr"], ["  ✓ onaylandı ", "ok"], ["PAY-" + hex(12), "dim"], ["  (inbox: tek sefer)", "dim"]);
+        step("pay", "done");
+        seat.className = "bought";
+        step("tix", "on");
+        await wait(800);
+        say(["tickets", "usr"], ["   ✓ ", "ok"], `GS-${hex(8)}-${hex(12)}`);
+        step("tix", "done");
+        step("mail", "on");
+        await wait(700);
+        say(["notify", "usr"], "    ✉ bilet e-postayla gönderildi");
+        step("mail", "done");
+        say(["✓ Çift satış: 0 · Kayıp mesaj: 0", "ok"]);
       }
-      println("Güncel bakiye: " + py(hesap.bakiye) + " TL");
-      println("Güncel ek hesap: " + py(hesap.ekHesap) + " TL");
-      println();
+
+      running = false;
+      buttons.forEach((b) => { b.disabled = false; });
     }
 
-    function submit(raw) {
-      const value = raw.trim();
-      if (mode === "boot" || mode === "end") return;
-      println(value, "usr");
-
-      if (mode === "menu") {
-        println();
-        if (value === "1") bakiyeSorgulama();
-        else if (value === "2") return askAmount("withdraw");
-        else if (value === "3") return askAmount("deposit");
-        else if (value === "4") {
-          println("Çıkış yapılıyor...", "dim");
-          println();
-          println("[Program sonlandı]", "dim");
-          mode = "end";
-          setKeys([]);
-          const again = document.createElement("button");
-          again.type = "button";
-          again.textContent = "↻ Yeniden başlat";
-          again.addEventListener("click", boot);
-          keys.appendChild(again);
-          return;
-        } else {
-          println("Yanlış işlem seçtiniz. Tekrardan deneyiniz.", "err");
-        }
-        println();
-        return showMenu();
-      }
-
-      if (mode === "withdraw" || mode === "deposit") {
-        const miktar = parseFloat(value.replace(",", "."));
-        if (!isFinite(miktar) || miktar <= 0 || miktar > 1e9) {
-          println("Lütfen geçerli bir miktar giriniz.", "err");
-          return askAmount(mode);
-        }
-        if (mode === "withdraw") {
-          if (!paraCekme(miktar)) return;
-        } else {
-          paraYatirma(miktar);
-        }
-        println();
-        return showMenu();
-      }
-
-      if (mode === "overdraft") {
-        if (value === "e") {
-          const kullanilacak = pending - parseFloat(hesap.bakiye);
-          hesap.bakiye = "0";
-          hesap.ekHesap = parseFloat(hesap.ekHesap) - kullanilacak;
-          println("Paranızı alabilirsiniz.", "ok");
-        } else {
-          println("Üzgünüz, bakiyeniz yetersiz.", "err");
-        }
-        println();
-        println();
-        input.setAttribute("inputmode", "numeric");
-        return showMenu();
-      }
-    }
-
-    formEl.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!input.value.trim()) return;
-      submit(input.value);
-      input.value = "";
-    });
-
-    out.addEventListener("click", () => input.focus({ preventScroll: true }));
-
-    whenVisible(root, () => {
-      if (!started) {
-        started = true;
-        boot();
-      }
-    });
+    buttons.forEach((button) => button.addEventListener("click", () => run(button.dataset.run)));
+    resetMap();
+    whenVisible(root, () => setTimeout(() => run("ok"), 400));
   }
 
   function setupPushSwapDemo(root) {

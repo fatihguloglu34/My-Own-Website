@@ -2308,6 +2308,110 @@ html.intro .name-row {
   margin-right: 5px;
 }
 
+.term-keys button:disabled {
+  opacity: .45;
+  cursor: default;
+}
+
+.gise .term-out {
+  height: 214px;
+}
+
+.gise-stage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 18px 18px 14px;
+}
+
+.gise-map {
+  display: grid;
+  grid-template-columns: repeat(6, 14px) 6px repeat(6, 14px);
+  gap: 5px;
+  flex: none;
+}
+
+.gise-map i {
+  width: 14px;
+  height: 12px;
+  border-radius: 4px 4px 2px 2px;
+  background: rgba(255, 255, 255, .14);
+  transition: background-color .3s, box-shadow .3s;
+}
+
+.gise-map i:nth-child(12n + 7) {
+  grid-column: 8;
+}
+
+.gise-map i.sold { background: rgba(255, 255, 255, .045); }
+.gise-map i.target { box-shadow: 0 0 0 2px #f2b705; }
+.gise-map i.held { background: #8e6bd8; }
+.gise-map i.mine { background: #f2b705; }
+.gise-map i.reserved { background: repeating-linear-gradient(135deg, #f2b705 0 3px, #8a6a00 3px 6px); }
+.gise-map i.bought { background: #7ee2a8; box-shadow: 0 0 12px rgba(126, 226, 168, .6); }
+.gise-map i.freed { background: rgba(255, 255, 255, .14); box-shadow: 0 0 0 2px #ff8a80; }
+
+.gise-stats {
+  display: grid;
+  gap: 12px;
+  text-align: right;
+}
+
+.gise-stats b {
+  display: block;
+  font: 700 1.9rem/1 var(--f-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.gise-stats span {
+  font: 500 .62rem var(--f-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #7f9893;
+}
+
+.gise-ok b { color: #7ee2a8; }
+.gise-conflict b { color: #ff8a80; }
+
+.gise-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 10px 18px;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.gise-flow li {
+  padding: 3px 9px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 999px;
+  font: 500 .68rem var(--f-mono);
+  color: #7f9893;
+  transition: border-color .3s, background-color .3s, color .3s;
+}
+
+.gise-flow li.on { border-color: #f2b705; background: rgba(242, 183, 5, .14); color: #fff; }
+.gise-flow li.done { border-color: rgba(126, 226, 168, .5); color: #7ee2a8; }
+.gise-flow li.err { border-color: rgba(255, 138, 128, .6); color: #ff8a80; }
+.gise-flow li.skip { opacity: .35; text-decoration: line-through; }
+
+@container (max-width: 380px) {
+  .gise-stage {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gise-stats {
+    grid-auto-flow: column;
+    gap: 24px;
+    text-align: left;
+  }
+}
+
 .school {
   margin-top: clamp(96px, 12vw, 160px);
 }
